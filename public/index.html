@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="shortcut icon" href="icon.png" type="image/x-icon/png">
+  <title>BrightFeed - spreading positivity through news</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <link rel="stylesheet" href="picnic.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+</head>
+
+<body style="margin: 0;">
+    <div style="overflow: hidden; height: 50px;" id="navbar" class="hidden">
+      <nav class="demo">
+        <a href="#" class="brand">
+          <!-- <img class="logo" src="sun.webp" alt="BrightFeed logo" style="margin-bottom: 0; cursor: pointer;" /> -->
+          <span class="brightfeed-logo">BrightFeed🌞</span>
+        </a>
+        <input id="bmenub" type="checkbox" class="show">
+        <label for="bmenub" class="burger pseudo button">📂</label>
+        <div class="menu">
+          <a id="reloadButton" onclick="location.reload();">
+            <img src="reload.png" alt="reload icon" class="logo reload" />
+          </a>
+          <a href="https://github.com/nisoojadhav/BrightFeed">
+            <img src="github.png" alt="github logo" class="logo" />
+          </a>
+        </div>
+      </nav>
+    </div>
+  
+    <center>
+      <header id="hero">
+        <a href="#">
+          <!-- <img src="sun.webp" alt="BrightFeed logo" width="15%" class="sun" /> -->
+          <h2 class="brightfeed-logo">BrightFeed🌞</h2>
+        </a>
+        <p style="margin-bottom: 50px;">spreading positivity through news</p>
+      </header>
+  
+      <div id="loading-text">
+        <img src="loading.gif" width="200px" />
+      </div>
+      <div id="news-container"></div>
+  
+      <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+  
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const rssUrl = 'https://brightfeed-server.onrender.com';
+          const dangerousWords = ['5-year', 'accident', 'assault', 'attack', 'autistic', 'baby', 'became the capital', 'blood', 'bomb', 'casualty', 'characters', 'crash', 'current affairs', 'dangerous', 'death', 'dies', 'disaster', 'emergency', 'evacuation', 'explosion', 'extortion', 'fatal', 'followed girl', 'fuck', 'gatorland', 'gore', 'guilty', 'gun charges', 'gunshot', 'home invasion robbery', 'homicide', 'hostage', 'injury', 'kidnapping', 'kill', 'knife', 'loses arm', 'man loses arm', 'manslaughter', 'missing', 'murder', 'netflix', 'nursery', 'Off Watch', 'on fire', 'politico', 'porn', 'preschool', 'rape', 'rescue', 'scheme', 'school', 'sex', 'sexual', 'stabbed', 'stabbing', 'stomped', 'terrorist', 'tragedy', 'two charges', 'victim', 'violence', 'Play Pickleball', 'Albuquerque']
+          const loadingText = document.getElementById('loading-text');
+  
+          fetch(rssUrl)
+            .then(response => response.text())
+            .then(xml => {
+              const parser = new DOMParser();
+              const xmlDoc = parser.parseFromString(xml, 'text/xml');
+              const articles = xmlDoc.querySelectorAll('item');
+              const targetElement = document.getElementById('news-container');
+  
+              loadingText.style.display = 'none';
+  
+              articles.forEach(article => {
+                const title = article.querySelector('title').textContent;
+                const hasDangerousWord = dangerousWords.some(word => title.toLowerCase().includes(word.toLowerCase()));
+                if (hasDangerousWord) return;
+                const link = article.querySelector('link').textContent;
+                const description = article.querySelector('description').textContent;
+                const pubDate = article.querySelector('pubDate').textContent;
+  
+                let currentTime = new Date();
+                let timestamp = new Date(pubDate);
+                let timeDiff = currentTime - timestamp;
+                let seconds = Math.floor(timeDiff / 1000);
+                let minutes = Math.floor(seconds / 60);
+                let hours = Math.floor(minutes / 60);
+                let days = Math.floor(hours / 24);
+                let timeAgo;
+                if (days > 0) {
+                  timeAgo = days + " day" + (days > 1 ? "s" : "") + " ago";
+                } else {
+                  timeAgo = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+                }
+  
+                const articleElement = document.createElement('div');
+                articleElement.innerHTML = `
+              <article class="card" style="width:70%">
+                <header>
+                <h3>${title}</h3>
+                </header>
+                <footer>
+                <p>${description}</p>
+                <a href="${link}" target="_blank">read more...</a>
+                <br>
+                <br>
+                <hr>
+                <p>${timeAgo}</p>
+                </footer>
+              </article>
+              <br>
+              `;
+                targetElement.appendChild(articleElement);
+              });
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              loadingText.style.display = 'none';
+            });
+        });
+  
+        window.addEventListener('scroll', function () {
+          let hero = document.getElementById('hero');
+          let navbar = document.getElementById('navbar');
+          let backToTopButton = document.getElementById('backToTopBtn');
+          if (window.pageYOffset > hero.offsetHeight) {
+            navbar.classList.remove('hidden');
+          } else {
+            navbar.classList.add('hidden');
+          }
+          if (window.pageYOffset > 20) {
+            backToTopButton.style.display = 'block';
+          } else {
+            backToTopButton.style.display = 'none';
+          }
+        });
+  
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      </script>
+</body>
+</html>

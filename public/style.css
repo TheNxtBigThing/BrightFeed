@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Yellowtail&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap");
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff2")
+      format("woff2"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff")
+      format("woff"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.ttf")
+      format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+* {
+  font-family: "space grotesk", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#backToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transform: translateY(0px);
+  transition: all 0.3s;
+  font-size: larger;
+}
+
+#backToTopBtn:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s;
+}
+
+#hiddenDiv {
+  display: none;
+}
+
+.hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+#reloadButton {
+  background: transparent;
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 50px;
+}
+
+.brightfeed-logo {
+  padding-top: -50px;
+  margin-top: 0;
+
+  font-family: "covered by your grace", cursive;
+  background: -webkit-linear-gradient(
+    90deg,
+    #65eaf3,
+    #adeee9,
+    #c8eddc,
+    #e4ebcf,
+    #ffeac2
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px black;
+
+  text-shadow: #33333310 1px;
+}
+
+.brand .brightfeed-logo {
+  font-size: 32px;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.reload {
+  transition: all 0.5s;
+}
+
+.reload:hover {
+  transition: all 1s;
+  transform: rotate(360deg);
+}
+
+@media only screen and (max-width: 767px) {
+  .sun {
+    width: 100px;
+  }
+  #loading-text img {
+    width: 100px;
+  }
+}
