@@ -7,87 +7,100 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Stay informed and uplifted with our Positive News web app. Discover heartwarming stories, inspiring events, and feel-good news from around the world. Vist now for a daily dose of positivity.">
+  <meta name="description"
+    content="Stay informed and uplifted with our Positive News web app. Discover heartwarming stories, inspiring events, and feel-good news from around the world. Vist now for a daily dose of positivity.">
   <link rel="stylesheet" href="picnic.css" type="text/css" media="screen">
   <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 </head>
 
 <body style="margin: 0;">
-    <div style="overflow: hidden; height: 50px;" id="navbar" class="hidden">
-      <nav class="demo">
-        <a href="#" class="brand">
-          <!-- <img class="logo" src="sun.webp" alt="BrightFeed logo" style="margin-bottom: 0; cursor: pointer;" /> -->
-          <span class="brightfeed-logo">BrightFeed🌞</span>
+  <div style="overflow: hidden; height: 50px;" id="navbar" class="hidden">
+    <nav class="demo">
+      <a href="#" class="brand">
+        <!-- <img class="logo" src="sun.webp" alt="BrightFeed logo" style="margin-bottom: 0; cursor: pointer;" /> -->
+        <span class="brightfeed-logo">BrightFeed🌞</span>
+      </a>
+      <input id="bmenub" type="checkbox" class="show">
+      <label for="bmenub" class="burger pseudo button">📂</label>
+      <div class="menu">
+        <a id="reloadButton" onclick="location.reload();">
+          <img src="reload.png" alt="reload icon" class="logo reload" />
         </a>
-        <input id="bmenub" type="checkbox" class="show">
-        <label for="bmenub" class="burger pseudo button">📂</label>
-        <div class="menu">
-          <a id="reloadButton" onclick="location.reload();">
-            <img src="reload.png" alt="reload icon" class="logo reload" />
-          </a>
-          <a href="https://github.com/TheNxtBigThing/BrightFeed">
-            <img src="github.png" alt="github logo" class="logo" />
-          </a>
-        </div>
-      </nav>
-    </div>
-  
-    <center>
-      <header id="hero">
-        <a href="#">
-          <!-- <img src="sun.webp" alt="BrightFeed logo" width="15%" class="sun" /> -->
-          <h2 class="brightfeed-logo">BrightFeed🌞</h2>
+        <a href="https://github.com/TheNxtBigThing/BrightFeed">
+          <img src="github.png" alt="github logo" class="logo" />
         </a>
-        <p style="margin-bottom: 50px;">spreading positivity through news</p>
-      </header>
-  
-      <div id="loading-text">
-        <img src="loading.gif" width="200px" />
       </div>
-      <div id="news-container"></div>
-  
-      <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
-  
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const rssUrl = 'https://brightfeed-server.onrender.com';
-          const dangerousWords = ['5-year', 'assault', 'attack', 'autistic', 'blood', 'bomb', 'casualty', 'Pakistan', 'crash', 'Bollywood', 'dangerous', 'extortion', 'fatal', 'followed girl', 'fuck', 'gatorland', 'gore',  'gun charges', 'gunshot', 'home invasion robbery', 'homicide', 'hostage', 'injury', 'kidnapping', 'kill', 'knife', 'loses arm', 'man loses arm', 'manslaughter', 'missing', 'murder', 'netflix', 'nursery', 'Off Watch', 'on fire', 'politico', 'porn', 'preschool', 'rape', 'rescue', 'scheme', 'school', 'sex', 'sexual', 'stabbed', 'stabbing', 'stomped', 'terrorist', 'tragedy', 'two charges', 'victim', 'violence',  'Albuquerque','sex','hot','18+','shit','bitch','motherfucker','cocaine','mms','condom','prostitue','seducing','seduce','whore','slut','sexting','torture','asshole','bullshit','cock','dick','in shit','jesus fuck','nigga','nigra','pussy','son of bitch','son of whore','harass','sissy','bloody','piss off','lesbian','gay','Bisexual','LGBTQ','senile','masturbating','masturbation','anime','cartoon','hentai','rummy','gambling',]
-          const loadingText = document.getElementById('loading-text');
-  
-          fetch(rssUrl)
-            .then(response => response.text())
-            .then(xml => {
-              const parser = new DOMParser();
-              const xmlDoc = parser.parseFromString(xml, 'text/xml');
-              const articles = xmlDoc.querySelectorAll('item');
-              const targetElement = document.getElementById('news-container');
-  
-              loadingText.style.display = 'none';
-  
-              articles.forEach(article => {
-                const title = article.querySelector('title').textContent;
-                const hasDangerousWord = dangerousWords.some(word => title.toLowerCase().includes(word.toLowerCase()));
-                if (hasDangerousWord) return;
-                const link = article.querySelector('link').textContent;
-                const description = article.querySelector('description').textContent;
-                const pubDate = article.querySelector('pubDate').textContent;
-  
-                let currentTime = new Date();
-                let timestamp = new Date(pubDate);
-                let timeDiff = currentTime - timestamp;
-                let seconds = Math.floor(timeDiff / 1000);
-                let minutes = Math.floor(seconds / 60);
-                let hours = Math.floor(minutes / 60);
-                let days = Math.floor(hours / 24);
-                let timeAgo;
-                if (days > 0) {
-                  timeAgo = days + " day" + (days > 1 ? "s" : "") + " ago";
-                } else {
-                  timeAgo = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
-                }
-  
-                const articleElement = document.createElement('div');
-                articleElement.innerHTML = `
+    </nav>
+  </div>
+
+  <center>
+    <header id="hero">
+      <a href="#">
+        <!-- <img src="sun.webp" alt="BrightFeed logo" width="15%" class="sun" /> -->
+        <h2 class="brightfeed-logo">BrightFeed🌞</h2>
+      </a>
+      <p style="margin-bottom: 50px;">spreading positivity through news</p>
+    </header>
+
+    <div id="loading-text">
+      <img src="loading.gif" width="200px" />
+    </div>
+    <div id="news-container"></div>
+
+    <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+    <footer class="footer ">
+      <div class="footer-header">About Us</div>
+      <ul class="links">
+        <li class="footer-githublogo">
+          <a href="https://github.com/TheNxtBigThing/BrightFeed">
+            <img src="github.png" alt="github logo" class="footer-githublogo" />
+          </a>
+        </li>
+      </ul>
+      <p>&copy; <span id="copyright-year"></span> <b>TheNxtBigThing</b>. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const rssUrl = 'https://brightfeed-server.onrender.com';
+        const dangerousWords = ['5-year', 'assault', 'attack', 'autistic', 'blood', 'bomb', 'casualty', 'Pakistan', 'crash', 'Bollywood', 'dangerous', 'extortion', 'fatal', 'followed girl', 'fuck', 'gatorland', 'gore', 'gun charges', 'gunshot', 'home invasion robbery', 'homicide', 'hostage', 'injury', 'kidnapping', 'kill', 'knife', 'loses arm', 'man loses arm', 'manslaughter', 'missing', 'murder', 'netflix', 'nursery', 'Off Watch', 'on fire', 'politico', 'porn', 'preschool', 'rape', 'rescue', 'scheme', 'school', 'sex', 'sexual', 'stabbed', 'stabbing', 'stomped', 'terrorist', 'tragedy', 'two charges', 'victim', 'violence', 'Albuquerque', 'sex', 'hot', '18+', 'shit', 'bitch', 'motherfucker', 'cocaine', 'mms', 'condom', 'prostitue', 'seducing', 'seduce', 'whore', 'slut', 'sexting', 'torture', 'asshole', 'bullshit', 'cock', 'dick', 'in shit', 'jesus fuck', 'nigga', 'nigra', 'pussy', 'son of bitch', 'son of whore', 'harass', 'sissy', 'bloody', 'piss off', 'lesbian', 'gay', 'Bisexual', 'LGBTQ', 'senile', 'masturbating', 'masturbation', 'anime', 'cartoon', 'hentai', 'rummy', 'gambling',]
+        const loadingText = document.getElementById('loading-text');
+
+        fetch(rssUrl)
+          .then(response => response.text())
+          .then(xml => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xml, 'text/xml');
+            const articles = xmlDoc.querySelectorAll('item');
+            const targetElement = document.getElementById('news-container');
+
+            loadingText.style.display = 'none';
+
+            articles.forEach(article => {
+              const title = article.querySelector('title').textContent;
+              const hasDangerousWord = dangerousWords.some(word => title.toLowerCase().includes(word.toLowerCase()));
+              if (hasDangerousWord) return;
+              const link = article.querySelector('link').textContent;
+              const description = article.querySelector('description').textContent;
+              const pubDate = article.querySelector('pubDate').textContent;
+
+              let currentTime = new Date();
+              let timestamp = new Date(pubDate);
+              let timeDiff = currentTime - timestamp;
+              let seconds = Math.floor(timeDiff / 1000);
+              let minutes = Math.floor(seconds / 60);
+              let hours = Math.floor(minutes / 60);
+              let days = Math.floor(hours / 24);
+              let timeAgo;
+              if (days > 0) {
+                timeAgo = days + " day" + (days > 1 ? "s" : "") + " ago";
+              } else {
+                timeAgo = hours + " hour" + (hours > 1 ? "s" : "") + " ago";
+              }
+
+              const articleElement = document.createElement('div');
+              articleElement.innerHTML = `
               <article class="card" style="width:70%">
                 <header>
                 <h3>${title}</h3>
@@ -103,34 +116,38 @@
               </article>
               <br>
               `;
-                targetElement.appendChild(articleElement);
-              });
-            })
-            .catch(error => {
-              console.error('Error:', error);
-              loadingText.style.display = 'none';
+              targetElement.appendChild(articleElement);
             });
-        });
-  
-        window.addEventListener('scroll', function () {
-          let hero = document.getElementById('hero');
-          let navbar = document.getElementById('navbar');
-          let backToTopButton = document.getElementById('backToTopBtn');
-          if (window.pageYOffset > hero.offsetHeight) {
-            navbar.classList.remove('hidden');
-          } else {
-            navbar.classList.add('hidden');
-          }
-          if (window.pageYOffset > 20) {
-            backToTopButton.style.display = 'block';
-          } else {
-            backToTopButton.style.display = 'none';
-          }
-        });
-  
-        function scrollToTop() {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            loadingText.style.display = 'none';
+          });
+      });
+
+      window.addEventListener('scroll', function () {
+        let hero = document.getElementById('hero');
+        let navbar = document.getElementById('navbar');
+        let backToTopButton = document.getElementById('backToTopBtn');
+        if (window.pageYOffset > hero.offsetHeight) {
+          navbar.classList.remove('hidden');
+        } else {
+          navbar.classList.add('hidden');
         }
-      </script>
+        if (window.pageYOffset > 20) {
+          backToTopButton.style.display = 'block';
+        } else {
+          backToTopButton.style.display = 'none';
+        }
+      });
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      const currentYear = new Date().getFullYear();
+      const copyrightYearElement = document.getElementById("copyright-year");
+      copyrightYearElement.textContent = currentYear;
+    </script>
 </body>
+
 </html>

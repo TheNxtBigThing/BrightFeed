@@ -3,12 +3,9 @@
 
 @font-face {
   font-family: "Space Grotesk";
-  src: url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff2")
-      format("woff2"),
-    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff")
-      format("woff"),
-    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.ttf")
-      format("truetype");
+  src: url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff2") format("woff2"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff") format("woff"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.ttf") format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -76,14 +73,12 @@ h2 {
   margin-top: 0;
 
   font-family: "covered by your grace", cursive;
-  background: -webkit-linear-gradient(
-    90deg,
-    #65eaf3,
-    #adeee9,
-    #c8eddc,
-    #e4ebcf,
-    #ffeac2
-  );
+  background: -webkit-linear-gradient(90deg,
+      #65eaf3,
+      #adeee9,
+      #c8eddc,
+      #e4ebcf,
+      #ffeac2);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -109,10 +104,20 @@ h2 {
   transform: rotate(360deg);
 }
 
+img.footer-githublogo {
+  height: 5.2em;
+  width: 5.2em;
+}
+
+.footer-header {
+  font-size: 40px;
+}
+
 @media only screen and (max-width: 767px) {
   .sun {
     width: 100px;
   }
+
   #loading-text img {
     width: 100px;
   }
