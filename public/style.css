@@ -3,9 +3,12 @@
 
 @font-face {
   font-family: "Space Grotesk";
-  src: url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff2") format("woff2"),
-    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff") format("woff"),
-    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.ttf") format("truetype");
+  src: url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff2")
+      format("woff2"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.woff")
+      format("woff"),
+    url("//cdn.fontshare.com/wf/6DG6HUOGHOB35UGAANBDBVY77OCFNQOA/MX56D7EXTFRCL3EZPNM332VF6D5TDENT/2MGP255ZY2RSFHKW6LNN6W6BWQGC2LUO.ttf")
+      format("truetype");
   font-weight: 400;
   font-display: swap;
   font-style: normal;
@@ -68,17 +71,19 @@ h2 {
 }
 
 .brightfeed-logo {
-  font-size: 6rem;
+  font-size: 5rem;
   padding-top: -50px;
   margin-top: 0;
 
   font-family: "covered by your grace", cursive;
-  background: -webkit-linear-gradient(90deg,
-      #65eaf3,
-      #adeee9,
-      #c8eddc,
-      #e4ebcf,
-      #ffeac2);
+  background: -webkit-linear-gradient(
+    90deg,
+    #65eaf3,
+    #adeee9,
+    #c8eddc,
+    #e4ebcf,
+    #ffeac2
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -105,12 +110,12 @@ h2 {
 }
 
 img.footer-githublogo {
-  height: 5.2em;
-  width: 5.2em;
+  height: 5em;
+  width: 5em;
 }
 
 .footer-header {
-  font-size: 40px;
+  font-size: 25px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -121,4 +126,16 @@ img.footer-githublogo {
   #loading-text img {
     width: 100px;
   }
+
+  .brightfeed-logo {
+    font-size: 4rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+}
+
+hr {
+  width: 90%;
 }
