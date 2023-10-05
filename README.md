@@ -1,2 +1,2 @@
 # BrightFeed
-spreading positivity through positive news.
+spreading positivity through news.
